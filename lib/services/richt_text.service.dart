@@ -1,4 +1,4 @@
-import 'package:your_body_lab_flutter/models/article.model.dart';
+import 'package:your_body_lab/models/article.model.dart';
 
 String slateToHTML(ArticleModel article) {
   // convert slate json to html string

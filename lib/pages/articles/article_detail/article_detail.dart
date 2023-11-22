@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:your_body_lab_flutter/models/article.model.dart';
-import 'package:your_body_lab_flutter/services/richt_text.service.dart';
+import 'package:your_body_lab/models/article.model.dart';
+import 'package:your_body_lab/services/richt_text.service.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 class ArticleDetail extends StatelessWidget {

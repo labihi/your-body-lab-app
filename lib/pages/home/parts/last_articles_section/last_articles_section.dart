@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_body_lab_flutter/pages/home/parts/last_articles_section/last_articles_section_list.dart';
+import 'package:your_body_lab/pages/home/parts/last_articles_section/last_articles_section_list.dart';
 
 class LastArticlesSection extends StatelessWidget {
   const LastArticlesSection({super.key});

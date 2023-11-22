@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:your_body_lab_flutter/models/area.model.dart';
-import 'package:your_body_lab_flutter/models/paginated_response.model.dart';
-import 'package:your_body_lab_flutter/pages/home/parts/areas_section/area_card.dart';
-import 'package:your_body_lab_flutter/services/color.service.dart';
-import 'package:your_body_lab_flutter/services/home_page.service.dart';
+import 'package:your_body_lab/models/area.model.dart';
+import 'package:your_body_lab/models/paginated_response.model.dart';
+import 'package:your_body_lab/pages/home/parts/areas_section/area_card.dart';
+import 'package:your_body_lab/services/color.service.dart';
+import 'package:your_body_lab/services/home_page.service.dart';
 
 class AreasPage extends StatefulWidget {
   const AreasPage({super.key});

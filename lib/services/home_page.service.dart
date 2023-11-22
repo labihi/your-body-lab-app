@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:your_body_lab_flutter/models/area.model.dart';
+import 'package:your_body_lab/models/area.model.dart';
 import 'package:http/http.dart' as http;
-import 'package:your_body_lab_flutter/models/article.model.dart';
-import 'package:your_body_lab_flutter/models/paginated_response.model.dart';
+import 'package:your_body_lab/models/article.model.dart';
+import 'package:your_body_lab/models/paginated_response.model.dart';
 
 Future<PaginatedResponse<Area>> getAreas() async {
   final epAreas = '${dotenv.env['API_URL']}/areas';

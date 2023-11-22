@@ -1,5 +1,5 @@
-import 'package:your_body_lab_flutter/models/area.model.dart';
-import 'package:your_body_lab_flutter/models/media.model.dart';
+import 'package:your_body_lab/models/area.model.dart';
+import 'package:your_body_lab/models/media.model.dart';
 
 class ArticleModel {
   final String? id;

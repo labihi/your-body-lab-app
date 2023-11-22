@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_body_lab_flutter/services/image.service.dart';
+import 'package:your_body_lab/services/image.service.dart';
 
 class ArticleCard extends StatelessWidget {
   final String title;

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:your_body_lab_flutter/components/scaffold_nested_navigation.dart';
-import 'package:your_body_lab_flutter/models/article.model.dart';
-import 'package:your_body_lab_flutter/pages/areas/area_detail/area_detail.dart';
-import 'package:your_body_lab_flutter/pages/areas/areas_list.dart';
-import 'package:your_body_lab_flutter/pages/articles/article_detail/article_detail.dart';
-import 'package:your_body_lab_flutter/pages/articles/article_list.dart';
-import 'package:your_body_lab_flutter/pages/home/home_page.dart';
-import 'package:your_body_lab_flutter/pages/root/detail/detail_page.dart';
+import 'package:your_body_lab/components/scaffold_nested_navigation.dart';
+import 'package:your_body_lab/models/article.model.dart';
+import 'package:your_body_lab/pages/areas/area_detail/area_detail.dart';
+import 'package:your_body_lab/pages/areas/areas_list.dart';
+import 'package:your_body_lab/pages/articles/article_detail/article_detail.dart';
+import 'package:your_body_lab/pages/articles/article_list.dart';
+import 'package:your_body_lab/pages/home/home_page.dart';
+import 'package:your_body_lab/pages/root/detail/detail_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'home');

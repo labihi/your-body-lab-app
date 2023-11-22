@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:your_body_lab_flutter/app.dart';
+import 'package:your_body_lab/app.dart';
 
 Future main() async {
   // turn off the # in the URLs on the web

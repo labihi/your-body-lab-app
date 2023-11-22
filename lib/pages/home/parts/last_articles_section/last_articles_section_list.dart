@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:your_body_lab_flutter/models/article.model.dart';
-import 'package:your_body_lab_flutter/models/paginated_response.model.dart';
-import 'package:your_body_lab_flutter/pages/home/parts/last_articles_section/article_card.dart';
-import 'package:your_body_lab_flutter/services/home_page.service.dart';
+import 'package:your_body_lab/models/article.model.dart';
+import 'package:your_body_lab/models/paginated_response.model.dart';
+import 'package:your_body_lab/pages/home/parts/last_articles_section/article_card.dart';
+import 'package:your_body_lab/services/home_page.service.dart';
 
 class LastArticlesSectionList extends StatefulWidget {
   const LastArticlesSectionList({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:your_body_lab_flutter/models/article.model.dart';
-import 'package:your_body_lab_flutter/models/paginated_response.model.dart';
-import 'package:your_body_lab_flutter/pages/home/parts/last_articles_section/article_card.dart';
-import 'package:your_body_lab_flutter/services/article.service.dart';
+import 'package:your_body_lab/models/article.model.dart';
+import 'package:your_body_lab/models/paginated_response.model.dart';
+import 'package:your_body_lab/pages/home/parts/last_articles_section/article_card.dart';
+import 'package:your_body_lab/services/article.service.dart';
 
 class ArticleList extends StatefulWidget {
   final String title;
