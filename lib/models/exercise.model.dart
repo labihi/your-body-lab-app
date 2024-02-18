@@ -12,6 +12,7 @@ class Exercise {
   final Area area;
   final String duration;
   final Media video;
+  final Media image;
 
   const Exercise({
     required this.id,
@@ -24,6 +25,7 @@ class Exercise {
     required this.area,
     required this.duration,
     required this.video,
+    required this.image,
   });
 
   factory Exercise.fromJson(Map<String, dynamic> json) {
@@ -38,6 +40,7 @@ class Exercise {
       area: Area.fromJson(json['area'] as Map<String, dynamic>),
       duration: json['duration'],
       video: Media.fromJson(json['video'] as Map<String, dynamic>),
+      image: Media.fromJson(json['image'] as Map<String, dynamic>),
     );
   }
 
