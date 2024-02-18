@@ -250,9 +250,9 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
-                                      "1.",
-                                      style: TextStyle(
+                                    Text(
+                                      "${index+1}." ,
+                                      style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
