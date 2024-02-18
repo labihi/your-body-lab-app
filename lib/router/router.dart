@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:your_body_lab/components/scaffold_nested_navigation.dart';
 import 'package:your_body_lab/models/article.model.dart';
-import 'package:your_body_lab/pages/areas/area_detail/area_detail.dart';
+import 'package:your_body_lab/pages/area_detail/area_detail.dart';
 import 'package:your_body_lab/pages/areas/areas_list.dart';
-import 'package:your_body_lab/pages/articles/article_detail/article_detail.dart';
+import 'package:your_body_lab/pages/article_detail/article_detail.dart';
 import 'package:your_body_lab/pages/articles/article_list.dart';
 import 'package:your_body_lab/pages/home/home_page.dart';
 import 'package:your_body_lab/pages/root/detail/detail_page.dart';
+import 'package:your_body_lab/pages/training_workouts/training_list/training_list.dart';
+import 'package:your_body_lab/pages/training_workouts/training_workouts.dart';
+import 'package:your_body_lab/pages/workout_detail/workout_detail.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'home');
@@ -89,6 +92,35 @@ final goRouter = GoRouter(
                           ),
                         ],
                       ),
+                      GoRoute(
+                          path: 'schede',
+                          builder: (context, state) {
+                            if (state.pathParameters['areaTitle'] ==
+                                'Allenamento') {
+                              return const TrainingWorkouts();
+                            } else {
+                              return const Center(
+                                child: Text('Stretching'),
+                              );
+                            }
+                          },
+                          routes: [
+                            GoRoute(
+                                path: 'trainings/:difficulty',
+                                builder: (context, state) => TrainingList(
+                                      difficulty:
+                                          state.pathParameters['difficulty']!,
+                                    ),
+                                routes: [
+                                  GoRoute(
+                                    path: ':workoutID',
+                                    builder: (context, state) => WorkoutDetail(
+                                      id: state.pathParameters['workoutID']!,
+                                      title: state.extra! as String,
+                                    ),
+                                  )
+                                ]),
+                          ]),
                     ]),
               ],
             ),

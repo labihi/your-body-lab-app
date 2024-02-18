@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:your_body_lab/components/error_message.dart';
 import 'package:your_body_lab/models/area.model.dart';
 import 'package:your_body_lab/models/paginated_response.model.dart';
 import 'package:your_body_lab/pages/home/parts/areas_section/area_card.dart';
@@ -29,34 +30,53 @@ class _AreasPageState extends State<AreasPage> {
         title: const Text("Aree"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: FutureBuilder(
-          future: areas,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemCount: 6,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: GestureDetector(
-                    onTap: () => {
-                      context.go('/areas/${snapshot.data!.docs[index].title}')
-                    },
-                    child: AreaCard(
-                      title: snapshot.data!.docs[index].title,
-                      color: getColorFromHex(snapshot.data!.docs[index].color),
-                      icon: snapshot.data!.docs[index].icon,
+        padding: const EdgeInsets.all(10.0),
+        child: RefreshIndicator(
+          onRefresh: () async {
+            setState(() {
+              areas = getAreas();
+            });
+          },
+          child: FutureBuilder(
+            future: areas,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemCount: 6,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: GestureDetector(
+                      onTap: () => {
+                        context.go('/areas/${snapshot.data!.docs[index].title}')
+                      },
+                      child: AreaCard(
+                        title: snapshot.data!.docs[index].title,
+                        color:
+                            getColorFromHex(snapshot.data!.docs[index].color),
+                        icon: snapshot.data!.docs[index].icon,
+                      ),
                     ),
                   ),
-                ),
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          },
+                );
+              } else if (snapshot.hasError) {
+                return SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  clipBehavior: Clip.none,
+                  child: Center(
+                    child: ErrorMessage(
+                      snapshot.error.toString(),
+                    ),
+                  ),
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
         ),
       ),
     );

@@ -27,6 +27,4 @@ class Area {
   }
 
   static Area fromJsonModel(Map<String, dynamic> json) => Area.fromJson(json);
-
-  fromJson(Map<String, dynamic> json) {}
 }

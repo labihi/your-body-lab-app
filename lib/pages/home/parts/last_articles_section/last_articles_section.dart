@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:your_body_lab/models/article.model.dart';
+import 'package:your_body_lab/models/paginated_response.model.dart';
 import 'package:your_body_lab/pages/home/parts/last_articles_section/last_articles_section_list.dart';
 
 class LastArticlesSection extends StatelessWidget {
-  const LastArticlesSection({super.key});
+  final PaginatedResponse<ArticleModel> articles;
+  const LastArticlesSection({super.key, required this.articles});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        Row(
+        const Row(
           children: [
             Text("Ultimi articoli", style: TextStyle(fontSize: 30)),
           ],
         ),
-        LastArticlesSectionList()
+        LastArticlesSectionList(
+          articles: articles,
+        )
       ],
     );
   }

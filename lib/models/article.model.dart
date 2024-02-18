@@ -20,11 +20,25 @@ class ArticleModel {
     required this.createdAt,
   });
 
+  // factory ArticleModel.fromJson(Map<String, dynamic> json) {
+  //   final content = json['content'].cast<Map<String, dynamic>>();
+
+  //   return ArticleModel(
+  //     id: json['_id'] as String?,
+  //     title: json['title'] as String,
+  //     content: content,
+  //     category: Area.fromJsonModel(json['category']),
+  //     image: Media.fromJson(json['image'] as Map<String, dynamic>),
+  //     updatedAt: json['updatedAt'] as String,
+  //     createdAt: json['createdAt'] as String,
+  //   );
+  // }
+
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
     final content = json['content'].cast<Map<String, dynamic>>();
 
     return ArticleModel(
-      id: json['_id'] as String?,
+      id: json['id'] as String?,
       title: json['title'] as String,
       content: content,
       category: Area.fromJsonModel(json['category']),
@@ -36,4 +50,13 @@ class ArticleModel {
 
   static ArticleModel fromJsonModel(Map<String, dynamic> json) =>
       ArticleModel.fromJson(json);
+
+  //tojson
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'title': title,
+        'content': content,
+        'updatedAt': updatedAt,
+        'createdAt': createdAt,
+      };
 }

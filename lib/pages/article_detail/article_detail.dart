@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:your_body_lab/models/article.model.dart';
 import 'package:your_body_lab/services/richt_text.service.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:your_body_lab/services/html_serializer.dart';
 
 class ArticleDetail extends StatelessWidget {
   final String title;
@@ -26,12 +27,10 @@ class ArticleDetail extends StatelessWidget {
                   style: const TextStyle(fontSize: 32),
                 ),
                 const SizedBox(height: 20),
-                Text("Tempo di lettura: ~${timeToRead(article)} minuti"),
+                //Text("Tempo di lettura: ~${timeToRead(article)} minuti"),
                 const SizedBox(height: 40),
-                HtmlWidget(
-                  slateToHTML(article),
-                  textStyle: const TextStyle(fontSize: 18),
-                ),
+                HtmlWidget(HtmlSerializer().serialize(article.content!),
+                    textStyle: const TextStyle(fontSize: 20)),
               ],
             )),
       ),

@@ -16,7 +16,7 @@ class ArticleCard extends StatelessWidget {
             colorFilter:
                 const ColorFilter.mode(Colors.black54, BlendMode.darken),
             image: NetworkImage(
-              getImageUrl(imageUrl),
+              getMediaUrl(imageUrl),
             ),
             fit: BoxFit.cover,
             alignment: Alignment.topCenter,
