@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:your_body_lab/components/error_message.dart';
 import 'package:your_body_lab/components/video_player.dart';
 import 'package:your_body_lab/models/workout_plan.model.dart';
+import 'package:your_body_lab/services/image.service.dart';
 import 'package:your_body_lab/services/workout_service.dart';
 
 class WorkoutDetail extends StatefulWidget {
@@ -236,8 +237,8 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                             child: SizedBox(
                               width: double.infinity,
                               height: 130,
-                              child: Image.asset(
-                                "assets/images/training_stock.jpg",
+                              child: Image.network(
+                                getMediaUrl(snapshot.data!.exercises[index].image.url),
                                 fit: BoxFit.cover,
                               ),
                             ),
