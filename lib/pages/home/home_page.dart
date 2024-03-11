@@ -50,7 +50,6 @@ class _HomePageState extends State<HomePage> {
               future: Future.wait([articles, areas], eagerError: true),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  print(snapshot.data!.last.docs);
                   return Column(
                     children: [
                       AreasHorizontalScroll(

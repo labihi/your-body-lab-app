@@ -17,7 +17,6 @@ class HtmlSerializer {
           html += serialize(item['children']);
           html += '</li>';
         } else if (item.containsKey('type') && item['type'] == 'upload') {
-          print(item);
           html +=
               '<img src="${getMediaUrl(item['value']['filename'])}" alt="${item['alt']}">';
         } else if (item.containsKey('type') && item['type'] == 'a') {
