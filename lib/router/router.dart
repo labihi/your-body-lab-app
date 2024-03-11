@@ -98,7 +98,7 @@ final goRouter = GoRouter(
                               return const TrainingWorkouts();
                             } else {
                               return const Center(
-                                child: Text('Stretching'),
+                                child: Text('Nessuna scheda trovata'),
                               );
                             }
                           },
