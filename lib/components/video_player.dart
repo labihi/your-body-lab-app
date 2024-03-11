@@ -1,21 +1,19 @@
-import 'dart:ffi';
-
+import 'package:cached_video_player/cached_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:video_player/video_player.dart';
-import 'package:your_body_lab/services/color.service.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
-  String videoUrl = "";
-  VideoPlayerScreen(this.videoUrl,{super.key});
+  final String videoUrl;
+  final String imageUrl;
+  const VideoPlayerScreen(this.videoUrl, this.imageUrl, {super.key});
 
   @override
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
 }
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  late VideoPlayerController _controller;
-  late Future<void> _initializeVideoPlayerFuture;
+  late CachedVideoPlayerController _controller;
+  bool playVisible = false;
 
   @override
   void initState() {
@@ -24,15 +22,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     // Create and store the VideoPlayerController. The VideoPlayerController
     // offers several different constructors to play videos from assets, files,
     // or the internet.
-    _controller = VideoPlayerController.networkUrl(
-      Uri.parse(
-          widget.videoUrl
-      ),
+    _controller = CachedVideoPlayerController.network(
+      widget.videoUrl,
     );
 
     // Initialize the controller and store the Future for later use.
-    _initializeVideoPlayerFuture = _controller.initialize();
-
+    _controller.initialize().then((value) {
+      _controller.play();
+      setState(() {});
+    });
     // Use the controller to loop the video.
     _controller.setLooping(true);
   }
@@ -47,52 +45,58 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initializeVideoPlayerFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          // If the VideoPlayerController has finished initialization, use
-          // the data it provides to limit the aspect ratio of the video.
-          return AspectRatio(
-            aspectRatio: 16/9,
-            // Use the VideoPlayer widget to display the video.
-            child: Stack(
-              children: [
-                VideoPlayer(_controller),
-                Center(
-                  child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          // If the video is playing, pause it.
-                          if (_controller.value.isPlaying) {
-                            _controller.pause();
-                          } else {
-                            // If the video is paused, play it.
-                            _controller.play();
-                          }
-                        });
-                      },
-                      style: TextButton.styleFrom(
-                        iconColor: Colors.green[50],
-                      ),
-                      child: Icon(_controller.value.isPlaying ? Icons.pause : Icons.play_arrow, size: 60,)
-                  ),
-                )
-              ],
+    return _controller.value.isInitialized
+        ? GestureDetector(
+            onTap: () => setState(() {
+              playVisible = !playVisible;
+            }),
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              // Use the VideoPlayer widget to display the video.
+              child: Stack(
+                children: [
+                  CachedVideoPlayer(_controller),
+                  Center(
+                    child: AnimatedOpacity(
+                      // If the widget is visible, animate to 0.0 (invisible).
+                      // If the widget is hidden, animate to 1.0 (fully visible).
+                      opacity: playVisible ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 200),
+                      child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              if (!playVisible) {
+                                playVisible = !playVisible;
+                              } else {
+                                _controller.value.isPlaying
+                                    ? _controller.pause()
+                                    : _controller.play();
+                              }
+                              // If the video is playing, pause it.
+                            });
+                          },
+                          style: TextButton.styleFrom(
+                              iconColor: Colors.white,
+                              backgroundColor: Colors.black38),
+                          child: Icon(
+                            _controller.value.isPlaying
+                                ? Icons.pause
+                                : Icons.play_arrow,
+                            size: 50,
+                          )),
+                    ),
+                  )
+                ],
+              ),
             ),
-          );
-        } else {
-          // If the VideoPlayerController is still initializing, show a
-          // loading spinner.
-          return Padding(padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 0),
+          )
+        : Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 0),
             child: Center(
               child: SpinKitPulse(
                 color: Colors.green[50],
               ),
             ),
           );
-        }
-      },
-    );
   }
 }
