@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:your_body_lab/services/image.service.dart';
 
@@ -15,9 +16,7 @@ class ArticleCard extends StatelessWidget {
           image: DecorationImage(
             colorFilter:
                 const ColorFilter.mode(Colors.black54, BlendMode.darken),
-            image: NetworkImage(
-              getMediaUrl(imageUrl),
-            ),
+            image: CachedNetworkImageProvider(getMediaUrl(imageUrl)),
             fit: BoxFit.cover,
             alignment: Alignment.topCenter,
           ),
@@ -29,6 +28,8 @@ class ArticleCard extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 title,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 3,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
