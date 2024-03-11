@@ -14,8 +14,6 @@ import 'package:your_body_lab/pages/workout_detail/workout_detail.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'home');
-final _shellNavigatorSearchKey =
-    GlobalKey<NavigatorState>(debugLabel: 'search');
 final _shellNavigatorCategoriesKey =
     GlobalKey<NavigatorState>(debugLabel: 'categories');
 
