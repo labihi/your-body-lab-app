@@ -11,6 +11,35 @@ class HtmlSerializer {
           // Recursively call the function for list items
           html += serialize(item['children']);
           html += '</ul>';
+        } else if (item.containsKey('type') && item['type'] == 'ol') {
+          html += '<ol>';
+          // Recursively call the function for list item children
+          html += serialize(item['children']);
+          html += '</ol>';
+        } else if (item.containsKey('type') && item['type'] == 'h1') {
+          html += '<h1>';
+          html += serialize(item['children']);
+          html += '</h1>';
+        } else if (item.containsKey('type') && item['type'] == 'h2') {
+          html += '<h2>';
+          html += serialize(item['children']);
+          html += '</h2>';
+        } else if (item.containsKey('type') && item['type'] == 'h3') {
+          html += '<h3>';
+          html += serialize(item['children']);
+          html += '</h3>';
+        } else if (item.containsKey('type') && item['type'] == 'h4') {
+          html += '<h4>';
+          html += serialize(item['children']);
+          html += '</h4>';
+        } else if (item.containsKey('type') && item['type'] == 'h5') {
+          html += '<h5>';
+          html += serialize(item['children']);
+          html += '</h5>';
+        } else if (item.containsKey('type') && item['type'] == 'h6') {
+          html += '<h6>';
+          html += serialize(item['children']);
+          html += '</h6>';
         } else if (item.containsKey('type') && item['type'] == 'li') {
           html += '<li>';
           // Recursively call the function for list item children
