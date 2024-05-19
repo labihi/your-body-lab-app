@@ -20,7 +20,7 @@ class TrainingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 210,
+      height: 300,
       child: Card(
         surfaceTintColor: Colors.grey.shade100,
         child: Padding(
@@ -112,7 +112,6 @@ class TrainingCard extends StatelessWidget {
                                 goals,
                                 style: const TextStyle(
                                   color: Colors.black45,
-                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                             ),

@@ -10,7 +10,9 @@ Future main() async {
   await dotenv.load(fileName: ".env");
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   usePathUrlStrategy();
-  runApp(const App());
+  runApp(
+    const App(),
+  );
 }
 
 // Stateful navigation based on:

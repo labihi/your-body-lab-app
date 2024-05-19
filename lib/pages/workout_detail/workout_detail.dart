@@ -44,7 +44,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  childAspectRatio: 2.3 / 3,
+                  childAspectRatio: 2.5 / 3.5,
                 ),
                 itemCount: snapshot.data!.exercises.length,
                 itemBuilder: (context, index) {

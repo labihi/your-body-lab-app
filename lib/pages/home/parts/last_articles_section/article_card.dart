@@ -9,27 +9,33 @@ class ArticleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        decoration: BoxDecoration(
+    return Stack(
+      children: [
+        ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-            colorFilter:
-                const ColorFilter.mode(Colors.black54, BlendMode.darken),
-            image: CachedNetworkImageProvider(getMediaUrl(imageUrl)),
-            fit: BoxFit.cover,
-            alignment: Alignment.topCenter,
+          child: Stack(
+            children: [
+              Image(
+                image: CachedNetworkImageProvider(getMediaUrl(imageUrl)),
+                fit: BoxFit.cover,
+                height: double.infinity,
+                alignment: Alignment.center,
+              ),
+              Container(
+                color: Colors.black45,
+                height: double.infinity,
+                width: double.infinity,
+              ),
+            ],
           ),
         ),
-        child: Column(
+        Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 title,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 3,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -39,7 +45,7 @@ class ArticleCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

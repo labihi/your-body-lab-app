@@ -43,7 +43,10 @@ class _ArticleListState extends State<ArticleList> {
                     itemCount: snapshot.data!.docs.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                    ),
                     itemBuilder: (context, index) => GestureDetector(
                           onTap: () => context.go(
                               '/areas/${snapshot.data!.docs[index].category.title}/articles/${snapshot.data!.docs[index].title}',

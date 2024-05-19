@@ -1,6 +1,6 @@
-import 'package:cached_video_player/cached_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
   final String videoUrl;
@@ -12,7 +12,7 @@ class VideoPlayerScreen extends StatefulWidget {
 }
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  late CachedVideoPlayerController _controller;
+  late VideoPlayerController _controller;
   bool playVisible = false;
 
   @override
@@ -22,7 +22,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     // Create and store the VideoPlayerController. The VideoPlayerController
     // offers several different constructors to play videos from assets, files,
     // or the internet.
-    _controller = CachedVideoPlayerController.network(
+    _controller = VideoPlayerController.network(
       widget.videoUrl,
     );
 
@@ -55,7 +55,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
               // Use the VideoPlayer widget to display the video.
               child: Stack(
                 children: [
-                  CachedVideoPlayer(_controller),
+                  VideoPlayer(_controller),
                   Center(
                     child: AnimatedOpacity(
                       // If the widget is visible, animate to 0.0 (invisible).

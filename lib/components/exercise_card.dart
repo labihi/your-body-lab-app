@@ -49,7 +49,6 @@ class ExerciseCard extends StatelessWidget {
                         workout.exercises[index].title,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:your_body_lab/components/area_item_card.dart';
 
 class AreaDetail extends StatelessWidget {
   final String title;
@@ -15,77 +15,17 @@ class AreaDetail extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              SizedBox(
-                width: double.infinity,
-                height: 200,
-                child: GestureDetector(
-                  onTap: () => {context.go('/areas/$title/articles')},
-                  child: Card(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          alignment: Alignment.topCenter,
-                          colorFilter: ColorFilter.mode(
-                              Colors.black54, BlendMode.darken),
-                          image: AssetImage("assets/images/articles.jpg"),
-                        ),
-                      ),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Text(
-                              "Articoli",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 40,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              AreaItemCard(
+                title,
+                title: "Articoli",
+                imagePath: "assets/images/articles.jpg",
+                destinationPath: "/areas/$title/articles",
               ),
-              SizedBox(
-                width: double.infinity,
-                height: 200,
-                child: GestureDetector(
-                  onTap: () => {context.go('/areas/$title/schede')},
-                  child: Card(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          alignment: Alignment.topCenter,
-                          colorFilter: ColorFilter.mode(
-                              Colors.black54, BlendMode.darken),
-                          image: AssetImage("assets/images/lessons.jpg"),
-                        ),
-                      ),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Text(
-                              "Schede",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 40,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              AreaItemCard(
+                title,
+                title: "Schede",
+                imagePath: "assets/images/lessons.jpg",
+                destinationPath: "/areas/$title/schede",
               ),
             ],
           ),
