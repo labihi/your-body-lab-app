@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:your_body_lab/components/area_item_card.dart';
 
 class TrainingWorkouts extends StatelessWidget {
