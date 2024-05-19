@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:your_body_lab/services/image.service.dart';
@@ -34,8 +35,11 @@ class ArticleCard extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text(
+              child: AutoSizeText(
                 title,
+                minFontSize: 12,
+                maxFontSize: 25,
+                maxLines: 4,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
