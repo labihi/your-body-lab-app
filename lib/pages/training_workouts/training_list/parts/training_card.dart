@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:your_body_lab/models/tag.model.dart';
 import 'package:your_body_lab/services/image.service.dart';
 
 class TrainingCard extends StatelessWidget {
@@ -6,7 +9,7 @@ class TrainingCard extends StatelessWidget {
   final String image;
   final String duration;
   final String daysPerWeek;
-  final String goals;
+  final List<Tag> goals;
 
   const TrainingCard(
       {super.key,
@@ -108,11 +111,30 @@ class TrainingCard extends StatelessWidget {
                               width: 10,
                             ),
                             Expanded(
-                              child: Text(
-                                goals,
-                                style: const TextStyle(
-                                  color: Colors.black45,
-                                ),
+                              child: Wrap(
+                                spacing: 4,
+                                children: goals.asMap().entries.map((e) {
+                                  final index = e.key;
+                                  {
+                                    if (index < 3) {
+                                      return Text(
+                                        e.value.name,
+                                        style: const TextStyle(
+                                          color: Colors.black45,
+                                        ),
+                                      );
+                                    } else {
+                                      final otherGoals = goals.length - 3;
+                                      return Text(
+                                        "+ altri ${(otherGoals)}",
+                                        style: const TextStyle(
+                                          color: Colors.black45,
+                                          fontStyle: FontStyle.italic,
+                                        ),
+                                      );
+                                    }
+                                  }
+                                }).toList(),
                               ),
                             ),
                           ],

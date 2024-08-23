@@ -10,11 +10,12 @@ class Exercise {
   final String? equipment;
   final String rest;
   final Area area;
-  final String duration;
-  final Media video;
+  final String? duration;
+  final Media? video;
   final Media image;
 
   const Exercise({
+    required this.video,
     required this.id,
     required this.title,
     required this.instructions,
@@ -24,7 +25,6 @@ class Exercise {
     required this.rest,
     required this.area,
     required this.duration,
-    required this.video,
     required this.image,
   });
 
@@ -39,7 +39,9 @@ class Exercise {
       rest: json['rest'],
       area: Area.fromJson(json['area'] as Map<String, dynamic>),
       duration: json['duration'],
-      video: Media.fromJson(json['video'] as Map<String, dynamic>),
+      video: json['video'] == null
+          ? null
+          : Media.fromJson(json['video'] as Map<String, dynamic>),
       image: Media.fromJson(json['image'] as Map<String, dynamic>),
     );
   }

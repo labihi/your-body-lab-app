@@ -42,8 +42,11 @@ class _TrainingListState extends State<TrainingList> {
           future: workouts,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return ListView.builder(
+              return ListView.separated(
                 itemCount: snapshot.data!.docs.length,
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 20,
+                ),
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () => context.go(
@@ -56,7 +59,7 @@ class _TrainingListState extends State<TrainingList> {
                       duration: snapshot.data!.docs[index].totalDuration,
                       daysPerWeek:
                           "${snapshot.data!.docs[index].daysPerWeek} Giorni",
-                      goals: snapshot.data!.docs[index].goal,
+                      goals: snapshot.data!.docs[index].tags!,
                     ),
                   );
                 },

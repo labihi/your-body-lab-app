@@ -26,10 +26,11 @@ class BottomSheetExercise extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  VideoPlayerScreen(
-                    workout.exercises[index].video.url!,
-                    workout.exercises[index].image.url!,
-                  )
+                  if (workout.exercises[index].video != null)
+                    VideoPlayerScreen(
+                      workout.exercises[index].video!.url!,
+                      workout.exercises[index].image.url!,
+                    )
                 ],
               ),
             ),
@@ -51,11 +52,17 @@ class BottomSheetExercise extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Text(
-            workout.exercises[index].title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Center(
+              child: Text(
+                workout.exercises[index].title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
             ),
           ),
           const SizedBox(
@@ -77,7 +84,7 @@ class BottomSheetExercise extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        workout.exercises[index].duration,
+                        workout.exercises[index].duration ?? "",
                         style: const TextStyle(
                           color: Colors.black45,
                         ),

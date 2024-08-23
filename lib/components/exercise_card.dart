@@ -50,6 +50,8 @@ class ExerciseCard extends StatelessWidget {
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                       ),
                     ),
                   ],
@@ -70,7 +72,7 @@ class ExerciseCard extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                          workout.exercises[index].duration,
+                          workout.exercises[index].duration ?? "",
                           style: const TextStyle(
                             color: Colors.black45,
                           ),

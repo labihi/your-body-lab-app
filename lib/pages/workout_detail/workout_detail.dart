@@ -39,22 +39,45 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               inspect(snapshot.data!);
-              return GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 2.5 / 3.5,
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text('Istruzioni',
+                        style: Theme.of(context).textTheme.headlineMedium),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(snapshot.data!.usefulTips ?? ""),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Text('Esercizi',
+                        style: Theme.of(context).textTheme.headlineMedium),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        childAspectRatio: 2.5 / 3.5,
+                      ),
+                      itemCount: snapshot.data!.exercises.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                            onLongPress: () => log("Long Press"),
+                            onTap: () => Scaffold.of(context).showBottomSheet(
+                                (context) =>
+                                    BottomSheetExercise(snapshot.data!, index)),
+                            child: ExerciseCard(snapshot.data!, index));
+                      },
+                    )
+                  ],
                 ),
-                itemCount: snapshot.data!.exercises.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                      onLongPress: () => log("Long Press"),
-                      onTap: () => Scaffold.of(context).showBottomSheet(
-                          (context) =>
-                              BottomSheetExercise(snapshot.data!, index)),
-                      child: ExerciseCard(snapshot.data!, index));
-                },
               );
             } else if (snapshot.hasError) {
               return Center(
