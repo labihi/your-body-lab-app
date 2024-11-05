@@ -7,6 +7,20 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      builder: (context, child) {
+        final mediaQuery = MediaQuery.of(context);
+        final scale = mediaQuery.textScaler.clamp(
+          minScaleFactor: 0.8,
+          maxScaleFactor: 1.1,
+        );
+
+        return MediaQuery(
+          data: mediaQuery.copyWith(
+            textScaler: scale,
+          ),
+          child: child!,
+        );
+      },
       routerConfig: goRouter,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
