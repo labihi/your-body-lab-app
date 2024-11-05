@@ -22,7 +22,7 @@ class AreaCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      height: MediaQuery.of(context).textScaler.scale(20) * 10,
       width: 150,
       decoration: BoxDecoration(
         color: Color(color),
@@ -36,6 +36,7 @@ class AreaCard extends StatelessWidget {
           const SizedBox(height: 20),
           Text(
             title,
+            textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
