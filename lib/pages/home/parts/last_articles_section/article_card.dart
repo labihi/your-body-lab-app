@@ -20,6 +20,7 @@ class ArticleCard extends StatelessWidget {
                 image: CachedNetworkImageProvider(getMediaUrl(imageUrl)),
                 fit: BoxFit.cover,
                 height: double.infinity,
+                width: double.infinity,
                 alignment: Alignment.center,
               ),
               Container(

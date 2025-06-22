@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:your_body_lab/models/paginated_response.model.dart';
 import 'package:http/http.dart' as http;
@@ -30,6 +31,7 @@ Future<WorkoutPlan> getWorkout(String id) async {
     final response = await http.get(Uri.parse("$epWorkouts/$id"));
 
     if (response.statusCode == 200) {
+      debugPrint(response.body);
       return WorkoutPlan.fromJsonModel(
           jsonDecode(response.body) as Map<String, dynamic>);
     } else {

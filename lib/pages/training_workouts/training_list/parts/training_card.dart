@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:your_body_lab/models/tag.model.dart';
 import 'package:your_body_lab/services/image.service.dart';
@@ -23,7 +21,8 @@ class TrainingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 300,
+      //adjust the height of the card to fit the content
+      height: MediaQuery.of(context).textScaler.scale(20) * 12,
       child: Card(
         surfaceTintColor: Colors.grey.shade100,
         child: Padding(
@@ -48,9 +47,11 @@ class TrainingCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
+                      maxLines: 3,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     const SizedBox(
@@ -93,48 +94,6 @@ class TrainingCard extends StatelessWidget {
                               daysPerWeek,
                               style: const TextStyle(
                                 color: Colors.black45,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.sports_gymnastics_rounded,
-                              color: Colors.black45,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Wrap(
-                                spacing: 4,
-                                children: goals.asMap().entries.map((e) {
-                                  final index = e.key;
-                                  {
-                                    if (index < 3) {
-                                      return Text(
-                                        e.value.name,
-                                        style: const TextStyle(
-                                          color: Colors.black45,
-                                        ),
-                                      );
-                                    } else {
-                                      final otherGoals = goals.length - 3;
-                                      return Text(
-                                        "+ altri ${(otherGoals)}",
-                                        style: const TextStyle(
-                                          color: Colors.black45,
-                                          fontStyle: FontStyle.italic,
-                                        ),
-                                      );
-                                    }
-                                  }
-                                }).toList(),
                               ),
                             ),
                           ],

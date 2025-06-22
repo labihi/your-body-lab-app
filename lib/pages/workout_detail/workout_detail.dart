@@ -47,7 +47,13 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(snapshot.data!.usefulTips ?? ""),
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(snapshot.data!.usefulTips ?? "",
+                            style: Theme.of(context).textTheme.bodyMedium),
+                      ),
+                    ),
                     const SizedBox(
                       height: 40,
                     ),

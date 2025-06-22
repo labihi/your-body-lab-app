@@ -1,4 +1,5 @@
 import 'package:your_body_lab/models/exercise.model.dart';
+import 'package:your_body_lab/models/exercisePerDay.model.dart';
 import 'package:your_body_lab/models/media.model.dart';
 import 'package:your_body_lab/models/tag.model.dart';
 
@@ -13,6 +14,7 @@ class WorkoutPlan {
   final String difficulty;
   final String daysPerWeek;
   final List<Tag>? tags;
+  final List<ExercisePerDay>? exercisesPerDay;
 
   const WorkoutPlan({
     required this.id,
@@ -25,6 +27,7 @@ class WorkoutPlan {
     required this.difficulty,
     required this.daysPerWeek,
     required this.tags,
+    required this.exercisesPerDay,
   });
 
   factory WorkoutPlan.fromJson(Map<String, dynamic> json) {
@@ -42,6 +45,9 @@ class WorkoutPlan {
       daysPerWeek: json['days_per_week'],
       tags: (json['tags'] as List<dynamic>)
           .map((e) => Tag.fromJsonModel(e as Map<String, dynamic>))
+          .toList(),
+      exercisesPerDay: (json['exercisesPerDay'] as List<dynamic>)
+          .map((e) => ExercisePerDay.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }
