@@ -7,6 +7,10 @@ Map<String, IconData> icons = {
   "medical_services": Icons.medical_services,
   "psychology": Icons.psychology,
   "egg_alt": Icons.egg_alt,
+  "cardiology": Icons.monitor_heart,
+  "massage": Icons.spa,
+  "exercise": Icons.fitness_center,
+  "soba": Icons.restaurant,
 };
 
 class AreaCard extends StatelessWidget {
