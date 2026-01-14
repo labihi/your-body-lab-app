@@ -20,7 +20,7 @@ class ExerciseCard extends StatelessWidget {
             ),
             child: SizedBox(
                 width: double.infinity,
-                height: 130,
+                height: 100,
                 child: Image(
                   image: CachedNetworkImageProvider(
                       getMediaUrl(workout.exercises[index].image.url)),
