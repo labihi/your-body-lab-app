@@ -44,7 +44,7 @@ class _AreasPageState extends State<AreasPage> {
                 return GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
-                  itemCount: 6,
+                  itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: GestureDetector(
