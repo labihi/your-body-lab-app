@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:your_body_lab/components/video_player.dart';
 import 'package:your_body_lab/models/workout_plan.model.dart';
+import 'package:your_body_lab/services/image.service.dart';
 
 class BottomSheetExercise extends StatelessWidget {
   final WorkoutPlan workout;
@@ -28,8 +29,8 @@ class BottomSheetExercise extends StatelessWidget {
                 children: [
                   if (workout.exercises[index].video != null)
                     VideoPlayerScreen(
-                      workout.exercises[index].video!.url!,
-                      workout.exercises[index].image.url!,
+                      getMediaUrl(workout.exercises[index].video!.url!),
+                      getMediaUrl(workout.exercises[index].image.url!),
                     )
                 ],
               ),
